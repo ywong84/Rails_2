@@ -1,0 +1,21 @@
+<form action="/users/create" method="post">
+  <% if flash %>
+  <% flash.each do |message| %>
+  <h4><%= message %></h4>
+  <% end %>
+  <%end %>
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+  <label>
+    Name <input type="text" name="user[name]">
+  </label>
+  <label>
+    Email <input type="text" name="user[email]">
+  </label>
+  <label>
+    Password <input type="password" name="user[password]" value="">
+  </label>
+  <label>
+    Password <input type="password" name="user[password_confirmation]" value="">
+  </label>
+  <input id="button" type="submit" value="Join">
+</form>
