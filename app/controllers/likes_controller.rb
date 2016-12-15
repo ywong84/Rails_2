@@ -1,10 +1,10 @@
 class LikesController < ApplicationController
   before_action :require_login, only: [:create, :destroy]
-  before_action :require_correct_user, only: [:create, :destroy]
-  def create
-    Like.create( like_params )
-    redirect_to "/secrets"
+  before_action :require_correct_user, only: [:destroy]
 
+  def create
+    current_user.likes.create( like_params )
+    redirect_to "/secrets"
   end
   def destroy
     like = Like.find_by( like_params )
